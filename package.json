@@ -1,0 +1,43 @@
+{
+    "name": "hacker-news",
+    "version": "1.0.0",
+    "description": "Hacker News Application Using ReactJS and Express Server Side Render",
+    "author": "KRGLV",
+    "license": "MIT",
+    "main": "src/index.js",
+    "scripts": {
+        "build": "webpack --mode=production && npm run copy_static_assets",
+        "dev": "webpack && npm run copy_static_assets && concurrently \"webpack --watch\" \"nodemon dist\"",
+        "test": "npm run webpack && concurrently \"npm run webpack --watch\" \"mocha --watch\"",
+        "start": "SET NODE_ENV=production && node dist/index.js",
+        "copy_static_assets": "node copyStaticAssets.js",
+        "webpack": "webpack --config webpack.tests.js"
+    },
+    "keywords": [
+        "ReactJS"
+    ],
+    "dependencies": {
+        "@babel/polyfill": "^7.10.1",
+        "axios": "^0.19.2",
+        "express": "^4.17.1",
+        "node-fetch": "^2.6.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.3",
+        "@babel/preset-env": "^7.10.3",
+        "@babel/preset-react": "^7.10.1",
+        "babel-loader": "^8.1.0",
+        "chai": "^4.2.0",
+        "concurrently": "^5.2.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "mocha": "^8.0.1",
+        "nodemon": "^2.0.4",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-node-externals": "^1.7.2"
+    }
+}
