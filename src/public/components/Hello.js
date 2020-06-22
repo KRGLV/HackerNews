@@ -2,8 +2,7 @@ import React from "react";
 
 const Hello = (props) => (
     <React.Fragment>
-        <h1>Page Number, {props.page}</h1>
-        {JSON.stringify(props.data)}
+        <h1>Welcome, {props.name ? props.name : "John Smith"}!</h1>
         <br />
         <a href="/reactrouter">React Router</a>
     </React.Fragment>

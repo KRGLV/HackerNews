@@ -2,7 +2,7 @@ import express from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter as Router } from "react-router-dom";
-import Hello from "./../public/components/Hello";
+import HackerNewsList from "./../public/components/HackerNewsList";
 import ReactRouteList from "../public/components/ReactRouteList";
 import HackerNewsService from "./../service/HackerNews.service";
 
@@ -20,9 +20,9 @@ hnrouter.get("/", async (req, res, next) => {
         if (page > -1) {
             data = await HackerNewsService.find(page);
         }
-
+        //console.log(data);
         const componentStream = ReactDOMServer.renderToNodeStream(
-            <Hello page={page} data={data} />
+            <HackerNewsList page={page} data={data} />
         );
 
         const htmlStart = `

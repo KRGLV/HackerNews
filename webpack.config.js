@@ -20,6 +20,12 @@ const js = {
     },
 };
 
+const css = {
+    test: /\.css$/i,
+    exclude: /node_modules/,
+    use: ["style-loader", "css-loader"],
+};
+
 const serverConfig = {
     mode: "development",
     target: "node",
@@ -31,7 +37,14 @@ const serverConfig = {
         "index.js": path.resolve(__dirname, "src/index.js"),
     },
     module: {
-        rules: [js],
+        rules: [
+            js,
+            {
+                test: /\.css$/,
+                loader:
+                    "css/locals?module&localIdentName=[name]__[local]___[hash:base64:5]",
+            },
+        ],
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -47,7 +60,7 @@ const clientConfig = {
         "reactRoutes.js": path.resolve(__dirname, "src/public/reactRoutes.js"),
     },
     module: {
-        rules: [js],
+        rules: [js, css],
     },
     optimization: {
         splitChunks: {
