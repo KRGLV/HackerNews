@@ -190,6 +190,48 @@ const HackerNewsList = (props) => {
                     {renderTableData(data.hits, refele)}
                 </tbody>
             </table>
+            <div style={{ width: 100, minHeight: 30 }}>
+                <div
+                    style={{
+                        position: "absolute",
+                        right: 25,
+                        color: "#fa7809",
+                        fontWeight: "bold",
+                        marginTop: 5,
+                    }}
+                >
+                    {parseInt(props.page) > 0 && (
+                        <span>
+                            <a
+                                href={
+                                    parseInt(props.page) > 1
+                                        ? `/?page=${props.page - 1}`
+                                        : "/"
+                                }
+                                style={{ color: "#fa7809", padding: 5 }}
+                            >
+                                Previous
+                            </a>
+                            <span
+                                style={{
+                                    color: "#fa7809",
+                                    fontWeight: "bold",
+                                    fontSize: 20,
+                                }}
+                            >
+                                |
+                            </span>
+                        </span>
+                    )}
+
+                    <a
+                        href={`/?page=${parseInt(props.page) + 1}`}
+                        style={{ color: "#fa7809", padding: 5 }}
+                    >
+                        Next
+                    </a>
+                </div>
+            </div>
             <hr />
             <a href="/reactrouter">React Router</a>
         </React.Fragment>
