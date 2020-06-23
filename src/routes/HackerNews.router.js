@@ -33,6 +33,11 @@ hnrouter.get("/", async (req, res, next) => {
             page,
         })}; window.onload = (event) => {
           document.getElementsByTagName("path")[0].style.fill="#fff";
+          document.getElementsByClassName("rv-xy-plot__axis__line")[0].style.stroke = "#a09898";
+          document.getElementsByClassName("rv-xy-plot__axis__line")[0].style.strokeWidth = 1;
+          document.getElementsByClassName("rv-xy-plot__axis__line")[1].style.stroke = "#a09898";
+          document.getElementsByClassName("rv-xy-plot__axis__line")[1].style.strokeWidth = 1;
+          
         };</script>
       </head>
       <body>

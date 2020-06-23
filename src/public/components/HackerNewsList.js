@@ -252,9 +252,6 @@ const HackerNewsList = (props) => {
 
             <hr />
 
-            <a href="/reactrouter">React Router</a>
-
-            <hr />
             <XYPlot
                 width={1200}
                 height={300}
@@ -263,9 +260,10 @@ const HackerNewsList = (props) => {
             >
                 <XAxis
                     tickFormat={(v) => `${data.hits[v - 1].objectID}`}
-                    tickLabelAngle={-90}
+                    tickLabelAngle={-25}
+                    title="ID"
                 />
-                <YAxis />
+                <YAxis title="Votes" />
                 <HorizontalGridLines />
                 <VerticalGridLines />
 
@@ -294,6 +292,10 @@ const HackerNewsList = (props) => {
                     curve={"curveMonotoneX"}
                 />
             </XYPlot>
+            <hr />
+
+            <a href="/reactrouter">React Router</a>
+
             <hr />
         </React.Fragment>
     );
