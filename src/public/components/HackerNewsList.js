@@ -1,4 +1,14 @@
 import React, { useState, useRef } from "react";
+import {
+    XYPlot,
+    XAxis,
+    YAxis,
+    ChartLabel,
+    HorizontalGridLines,
+    VerticalGridLines,
+    LineMarkSeries,
+} from "react-vis";
+
 ///import styles from "./HackerNewsList.css";
 
 const getstyles = () => {
@@ -48,8 +58,8 @@ const getstyles = () => {
 };
 
 const hideRow = (refele, objectID) => {
-    console.log("............");
-    console.log(refele[`row_${objectID}`]);
+    // console.log("............");
+    // console.log(refele[`row_${objectID}`]);
     //refele[`row_${objectID}`].style.display = "hide";
     // [`row_${objectID}`]
     // window.document.getElementById(`Table_Row_${objectID}`).style.display =
@@ -163,15 +173,22 @@ const renderTableData = (data, refele) => {
     }
 };
 
+const getChartFormatData = (data) => {
+    let lineData = [];
+    data.hits.forEach((item, index) => {
+        lineData.push({ x: index + 1, y: item.vote });
+    });
+    return lineData;
+};
+
 const HackerNewsList = (props) => {
     const [data, setData] = useState(props.data);
     const [refele, setRefele] = useState({});
     let styles = getstyles();
+    const lldata = getChartFormatData(data);
+
     return (
         <React.Fragment>
-            {/* className={styles.wrapper} */}
-            <h1>Page Number, {props.page}</h1>
-
             <table
                 id="students"
                 // border="1"
@@ -232,8 +249,52 @@ const HackerNewsList = (props) => {
                     </a>
                 </div>
             </div>
+
             <hr />
+
             <a href="/reactrouter">React Router</a>
+
+            <hr />
+            <XYPlot
+                width={1200}
+                height={300}
+                colorType="linear"
+                colorRange={["yellow", "orange"]}
+            >
+                <XAxis
+                    tickFormat={(v) => `${data.hits[v - 1].objectID}`}
+                    tickLabelAngle={-90}
+                />
+                <YAxis />
+                <HorizontalGridLines />
+                <VerticalGridLines />
+
+                {/* <ChartLabel
+                    text="X Axis"
+                    className="alt-x-label"
+                    includeMargin={false}
+                    xPercent={0.525}
+                    yPercent={1.71}
+                />
+
+                <ChartLabel
+                    text="Y Axis"
+                    className="alt-y-label"
+                    includeMargin={false}
+                    xPercent={0.06}
+                    yPercent={0.06}
+                    style={{
+                        transform: "rotate(-90)",
+                        textAnchor: "end",
+                    }}
+                /> */}
+                <LineMarkSeries
+                    data={lldata}
+                    color="#0c0c9e"
+                    curve={"curveMonotoneX"}
+                />
+            </XYPlot>
+            <hr />
         </React.Fragment>
     );
 };

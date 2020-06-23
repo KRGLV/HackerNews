@@ -29,7 +29,11 @@ hnrouter.get("/", async (req, res, next) => {
     <!doctype html>
       <html>
       <head>
-        <script>window.__INITIAL__DATA__ = ${JSON.stringify({ page })}</script>
+        <script>window.__INITIAL__DATA__ = ${JSON.stringify({
+            page,
+        })}; window.onload = (event) => {
+          document.getElementsByTagName("path")[0].style.fill="#fff";
+        };</script>
       </head>
       <body>
       <div id="root">`;

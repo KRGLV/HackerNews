@@ -18,13 +18,13 @@
     ],
     "dependencies": {
         "@babel/polyfill": "^7.10.1",
-        "axios": "^0.19.2",
         "express": "^4.17.1",
         "memory-cache": "^0.2.0",
         "node-fetch": "^2.6.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-router-dom": "^5.2.0"
+        "react-router-dom": "^5.2.0",
+        "react-vis": "^1.11.7"
     },
     "devDependencies": {
         "@babel/core": "^7.10.3",
