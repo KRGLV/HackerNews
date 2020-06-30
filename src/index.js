@@ -19,5 +19,5 @@ app.use("/", HackerNewsRouter);
 
 // App Listening Port
 const port = 3000;
-app.listen(port);
-console.log(`Listening on port ${port}`);
+app.listen(process.env.PORT || port);
+console.log(`Listening on port ${process.env.PORT ? process.env.PORT : port}`);
